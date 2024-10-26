@@ -39,8 +39,8 @@ ___
       <li><a href="https://youtu.be/L3XuR-iRysU?si=esZTueFBHtXtvLeM">Understanding signals in Linux system [video]</a></li>
       <li><a href="https://www.youtube.com/watch?v=5We_HtLlAbs">Code Vault: Short introduction to signals in C [video]</a></li>
       <li><a href="https://www.youtube.com/watch?v=jF-1eFhyz1U">Code Vault: Handling signals [video]</a></li>
-      <li><a href="https://www.youtube.com/watch?v=PErrlOx3LYE"></a>Code Vault: Communicating between processes using signals [video]</li>
-      <li><a href="https://www.codequoi.com/en/sending-and-intercepting-a-signal-in-c/">Code(quoi); : Sending and intercepting a signal in C</a> accessed Oct. 2024</li>
+      <li><a href="https://www.youtube.com/watch?v=PErrlOx3LYE">Code Vault: Communicating between processes using signals [video]</a></li>
+      <li><a href="https://www.codequoi.com/en/sending-and-intercepting-a-signal-in-c/">Code(quoi); : Sending and intercepting a signal in C</a></li>
     </ul>
   </br>
   <h4>Bitwise operators</h4>
