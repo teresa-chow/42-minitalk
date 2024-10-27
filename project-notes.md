@@ -7,15 +7,50 @@ ___
 
 
 ### Table of contents
-[Mandatory instructions](#mandatory) · [Bonus instructions](#bonus-part) · [References & further reading](#references--further-reading)
+
+[Subject instructions](#subject-instructions) · [References & further reading](#references--further-reading)
 
 ___
 
 </br>
 
-# 📖 Subject – instructions
+<!--details>
+  <summary><h2>Subject instructions</h2></summary>
+  <h3>Mandatory</h3>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>
+      <table>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </li>
+  </ul>
+</details-->
 
-## Mandatory
+## Subject instructions
+
+### Mandatory
 
 - Name of executable files: `client` and `server`.
 - Turn in a Makefile to compile source files. It must not relink.
