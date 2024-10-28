@@ -134,6 +134,7 @@ ___
   <h4>Bitwise operators</h4>
     <ul>
       <li><a href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/">Bitwise operators in C</a></li>
+      <li><a href="https://www.codequoi.com/en/binary-010-uses-of-bit-shifting-and-bitwise-operations/">Binary 010: The uses of bit shifting and bitwise operations</a></li>
     </ul>
   </br>
   <h4>Makefile</h4>
