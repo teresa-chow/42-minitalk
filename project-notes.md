@@ -114,7 +114,7 @@ ___
 </br><hr></br>
 </details>
 
-<details>
+<details open>
 <summary><h3>References & further reading</h3></summary>
 
   <h4>Signals</h4>
