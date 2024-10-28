@@ -116,26 +116,30 @@ ___
 
 <details open>
 <summary><h3>References & further reading</h3></summary>
-
+  <h4>Processes</h4>
+    <ul>
+      <li><a href="https://sourceware.org/glibc/manual/2.40/html_mono/libc.html#Processes">The GNU C Library Reference Manual (version 2.40.): Processes</a> accessed Oct. 2024</li>
+    </ul>
   <h4>Signals</h4>
     <ul>
-      <li><a href="https://youtu.be/L3XuR-iRysU?si=esZTueFBHtXtvLeM">Understanding signals in Linux system [video]</a></li>
-      <li><a href="https://www.youtube.com/watch?v=5We_HtLlAbs">Code Vault: Short introduction to signals in C [video]</a></li>
-      <li><a href="https://www.youtube.com/watch?v=jF-1eFhyz1U">Code Vault: Handling signals [video]</a></li>
-      <li><a href="https://www.youtube.com/watch?v=PErrlOx3LYE">Code Vault: Communicating between processes using signals [video]</a></li>
-      <li><a href="https://www.codequoi.com/en/sending-and-intercepting-a-signal-in-c/">Code(quoi); : Sending and intercepting a signal in C</a></li>
+      <li><a href="https://sourceware.org/glibc/manual/2.40/html_mono/libc.html#Signal-Handling">The GNU C Library Reference Manual (version 2.40.): Signal Handling</a> accessed Oct. 2024</li>
+      <li><a href="https://youtu.be/L3XuR-iRysU?si=esZTueFBHtXtvLeM">Understanding signals in Linux system [video]</a> accessed Oct. 2024</li>
+      <li><a href="https://www.youtube.com/watch?v=5We_HtLlAbs">Code Vault: Short introduction to signals in C [video]</a> accessed Oct. 2024</li>
+      <li><a href="https://www.youtube.com/watch?v=jF-1eFhyz1U">Code Vault: Handling signals [video]</a> accessed Oct. 2024</li>
+      <li><a href="https://www.youtube.com/watch?v=PErrlOx3LYE">Code Vault: Communicating between processes using signals [video]</a> accessed Oct. 2024</li>
+      <li><a href="https://www.codequoi.com/en/sending-and-intercepting-a-signal-in-c/">Code(quoi); : Sending and intercepting a signal in C</a> accessed Oct. 2024</li>
     </ul>
   </br>
   <h4>Bitwise operators</h4>
     <ul>
-      <li><a href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/">Bitwise operators in C</a></li>
+      <li><a href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/">Bitwise operators in C</a> accessed Oct. 2024</li>
     </ul>
   </br>
   <h4>Makefile</h4>
     <ul>
-      <li><a href="https://www.gnu.org/software/make/manual/">GNU Make (manual)</a></li>
-      <li><a href="https://github.com/amjadmajid/Makefile/tree/master/04_Same_Directory">Makefile special variables</a></li>
-      <li><a href="https://stackoverflow.com/questions/4879592/whats-the-difference-between-and-in-makefile">Makefile assignments</a></li>
-      <li><a href="https://www.padok.fr/en/blog/beautiful-makefile-awk">Beautiful Makefile</a></li>
+      <li><a href="https://www.gnu.org/software/make/manual/">GNU Make (manual)</a> accessed Oct. 2024</li>
+      <li><a href="https://github.com/amjadmajid/Makefile/tree/master/04_Same_Directory">Makefile special variables</a> accessed Oct. 2024</li>
+      <li><a href="https://stackoverflow.com/questions/4879592/whats-the-difference-between-and-in-makefile">Makefile assignments</a> accessed Oct. 2024</li>
+      <li><a href="https://www.padok.fr/en/blog/beautiful-makefile-awk">Beautiful Makefile</a> accessed Oct. 2024</li>
     </ul>
 </details>
