@@ -120,6 +120,7 @@ ___
     <ul>
       <li><a href="https://sourceware.org/glibc/manual/2.40/html_mono/libc.html#Processes">The GNU C Library Reference Manual (version 2.40.): Processes</a></li>
     </ul>
+  </br>
   <h4>Signals</h4>
     <ul>
       <li><a href="https://sourceware.org/glibc/manual/2.40/html_mono/libc.html#Signal-Handling">The GNU C Library Reference Manual (version 2.40.): Signal Handling</a></li>
