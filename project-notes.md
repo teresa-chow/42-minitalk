@@ -14,29 +14,28 @@ ___
 
 </br>
 
-<!--details>
+<details open>
   <summary><h2>Subject instructions</h2></summary>
   <h3>Mandatory</h3>
   <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li>
+    <li>Name of executable files: <code>client</code> and <code>server</code>.</li>
+    <li>Turn in a Makefile to compile source files. It must not relink.</li>
+    <li>Use of <code>libft</code> is allowed.</li>
+    <li>Errors must be handled.</li>
+    <li>No memory leaks.</li>
+    <li>Up to one global varible per program (one for the <code>client</code>, one for the <code>server</code>).</li>
+    <li>The <code>server</code> must be started first. After its launch, it has to print its PID.</li>
+    <li>The <code>client</code> takes two parameters: <code>server PID</code> + <code>string to send</code>.</li>
+    <li>The <code>client</code> must send the string passed as a parameter to the <code>server</code>. Once the string has been received, the server must print it. (Original, in French: <em>Une fois la chaîne <strong>entièrement reçue</strong>, le serveur doit l’afficher.</em>)</li>
+    <li>One can only use these two signals: <code>SIGUSR1</code> and <code>SIGUSR2</code>.</li>
+    <li>The <code>server</code> should be able to receive strings from several clients in a row without needing to restart.</li>
+    <li>Communication between client and your server has to be done <strong>only</strong> using <code>UNIX signals</code>.</li>
+    <!--li>Use of the following functions is allowed:
       <table>
         <tr>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>Function</th>
+          <th>Library</th>
+          <th>Description</th>
         </tr>
         <tr>
           <td></td>
@@ -44,26 +43,9 @@ ___
           <td></td>
         </tr>
       </table>
-    </li>
+    </li-->
   </ul>
-</details-->
-
-## Subject instructions
-
-### Mandatory
-
-- Name of executable files: `client` and `server`.
-- Turn in a Makefile to compile source files. It must not relink.
-- Use of `libft` is allowed.
-- Errors must be handled.
-- No memory leaks.
-- Up to one global varible per program (one for the `client`, one for the `server`).
-- The `server` must be started first. After its launch, it has to print its PID.
-- The `client` takes two parameters: `server PID` + `string to send`.
-- The `client` must send the string passed as a parameter to the `server`. Once the string has been received, the server must print it. (Original, in French: _Une fois la chaîne **entièrement reçue**, le serveur doit l’afficher._)
-- One can only use these two signals: `SIGUSR1` and `SIGUSR2`.
-- The `server` should be able to receive strings from several clients in a row without needing to restart.
-- Communication between client and your server has to be done **only** using `UNIX signals`.
+</details>
 
 - Use of the following functions is allowed:
 
@@ -74,7 +56,7 @@ signal | signal.h | _ANSI C signal handling._ </br></br> :warning: **WARNING:** 
 sigemptyset | signal.h | `int  sigemptyset(sigset_t *set);` </br> _Returns `0` on success and `-1` on error._ </br></br> _`sigemptyset()` initializes the signal set given by set to empty, with all signals excluded from the set._ </br></br> 💡 **OBS.:** Objects of type `sigset_t` must be initialized by a call to either `sigemptyset()` or `sigfillset()` before  being passed to the functions `sigaddset()`, `sigdelset()`, and `sigismember()` or the additional glibc functions described below (`sigisemptyset()`, `sigandset()`,  and  `sigorset()`). The results are undefined if this is not done.
 sigaddset | signal.h | `int sigaddset(sigset_t *set, int signum);` </br> _Returns `0` on success and `-1` on error._ </br></br> _`sigaddset()` adds signal signum from set._
 sigaction | signal.h | `struct sigaction {`</br>`void     (*sa_handler)(int);`</br>`void     (*sa_sigaction)(int, siginfo_t *, void *);`</br>`sigset_t   sa_mask;`</br>`int        sa_flags;`</br>`void     (*sa_restorer)(void);`</br>`};` </br></br>_`sigaction` examines and changes a signal action._</br></br>_The `sigaction()` system  call is used to change the action taken by a process on receipt of a specific signal._
-kill | | `kill [options] <pid>`</br></br>_`kill` sends a signal to a process._</br></br> 💡 **OBS.:** (…) Negative PID values may be used to choose whole process groups; see the PGID column in ps command output.  A PID of -1 is special;  it  indicates  all processes except the kill process itself and init.
+kill | signal.h | `int kill(pid_t pid, int sig);`</br></br>_`kill` sends a signal to a process._</br></br> 💡 **OBS.:** (…) Negative PID values may be used to choose whole process groups; see the PGID column in ps command output.  A PID of -1 is special;  it  indicates  all processes except the kill process itself and init.
 getpid | unistd.h | _`getpid()` returns the process ID (PID) of the calling process. (This is often used by routines that generate unique temporary filenames.)_
 malloc | stdlib.h |
 free | stdlib.h |
