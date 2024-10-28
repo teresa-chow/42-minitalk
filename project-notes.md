@@ -30,7 +30,7 @@ ___
     <li>One can only use these two signals: <code>SIGUSR1</code> and <code>SIGUSR2</code>.</li>
     <li>The <code>server</code> should be able to receive strings from several clients in a row without needing to restart.</li>
     <li>Communication between client and your server has to be done <strong>only</strong> using <code>UNIX signals</code>.</li>
-    <!--li>Use of the following functions is allowed:
+    <li>Use of the following functions is allowed:</br></br>
       <table>
         <tr>
           <th>Function</th>
@@ -38,43 +38,81 @@ ___
           <th>Description</th>
         </tr>
         <tr>
+          <td>write</td>
+          <td>unistd.h</td>
           <td></td>
+        </tr>
+        <tr>
+          <td>signal</td>
+          <td>signal.h</td>
+          <td><em>ANSI C signal handling.</em> </br></br> :warning: <strong>WARNING:</strong> the behavior of <code>signal()</code> varies across UNIX versions, and has also varied historically across different versions of Linux.  Avoid its use: use <code>sigaction(2)</code> instead.</td>
+        </tr>
+        <tr>
+          <td>sigemptyset</td>
+          <td>signal.h</td>
+          <td><code>int  sigemptyset(sigset_t *set);</code></br><em>Returns <code>0</code> on success and <code>-1</code> on error.</em></br></br><em><code>sigemptyset()</code> initializes the signal set given by set to empty, with all signals excluded from the set.</em></br></br>💡 <strong>OBS.:</strong> Objects of type <code>sigset_t</code> must be initialized by a call to either <code>sigemptyset()</code> or <code>sigfillset()</code> before  being passed to the functions <code>sigaddset()</code>, <code>sigdelset()</code>, and <code>sigismember()</code> or the additional glibc functions described below (<code>sigisemptyset()</code>, <code>sigandset()</code>,  and  <code>sigorset()</code>). The results are undefined if this is not done.</td>
+        </tr>
+        <tr>
+          <td>sigaddset</td>
+          <td>signal.h</td>
+          <td><code>int sigaddset(sigset_t *set, int signum);</code></br><em>Returns <code>0</code> on success and <code>-1</code> on error.</em></br></br><em><code>sigaddset()</code> adds signal signum from set.</em></td>
+        </tr>
+        <tr>
+          <td>sigaction</td>
+          <td>signal.h</td>
+          <td><code>int sigaction(int signum, const struct sigaction *restrict act, struct sigaction *restrict oldact);</code></br></br><code>struct sigaction {</code></br><code>void     (*sa_handler)(int);</code></br><code>void     (*sa_sigaction)(int, siginfo_t *, void *);</code></br><code>sigset_t   sa_mask;</br>int        sa_flags;</code></br><code>void     (*sa_restorer)(void);</code></br><code>};</code></br></br><em><code>sigaction</code> examines and changes a signal action.</em></br></br><em>The <code>sigaction()</code> system  call is used to change the action taken by a process on receipt of a specific signal.</em></td>
+        </tr>
+        <tr>
+          <td>kill</td>
+          <td>signal.h</td>
+          <td><code>int kill(pid_t pid, int sig);</code></br></br><em><code>kill</code> sends a signal to a process.</em></br></br> 💡 <strong>OBS.:</strong><ul><li>Negative PID values may be used to choose whole process groups; see the PGID (Process Group ID) column in <code>ps</code> command output.</li><li>A PID of <code>0</code> indicates all of the processes in the calling process’ group.<li>A PID of <code>-1</code> indicates  all processes except the <code>kill</code> process itself and <code>init</code>.</li></ul></td>
+        </tr>
+        <tr>
+          <td>getpid</td>
+          <td>unistd.h</td>
+          <td><em><code>getpid()</code> returns the process ID (PID) of the calling process. (This is often used by routines that generate unique temporary filenames.)</em></td>
+        </tr>
+        <tr>
+          <td>malloc</td>
+          <td>stdlib.h</td>
+          <td></td>
+        </tr> 
+        <tr>
+          <td>free</td>
+          <td>stdlib.h</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>pause</td>
+          <td>unistd.h</td>
+          <td><em>Wait for signal.</em></br></br><em><code>pause()</code>  causes  the calling process (or thread) to sleep until a signal is delivered that either terminates the process or causes the invocation of a signal-catching function.</em></br></br><em><code>pause()</code> returns only when a signal was caught and the signal-catching function returned. In this case, <code>pause()</code> returns <code>-1</code>, and errno is set to EINTR.</em></td>
+        </tr>
+        <tr>
+          <td>sleep</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>usleep</td>
+          <td>unistd.h</td>
+          <td><em><code>usleep</code> suspends execution for microsecond intervals.</em></br></br><em>The <code>usleep()</code> function suspends execution of the calling thread for (at least) usec microseconds. The sleep may be lengthened slightly by any system activity or by the time spent processing the call or by the granularity of system timers.</em></td>
+        </tr>
+        <tr>
+          <td>exit</td>
           <td></td>
           <td></td>
         </tr>
       </table>
-    </li-->
+    </li>
   </ul>
+</br>
+<h3>Bonus</h3>
+<ul>
+  <li>The <code>server</code> acknowledges every message received by sending back a signal to the <code>client</code>.</li>
+  <li>Unicode characters support.</li>
+</ul>
+</br><hr></br>
 </details>
-
-- Use of the following functions is allowed:
-
-Function | Library | Description
---|--|--
-write | unistd.h |
-signal | signal.h | _ANSI C signal handling._ </br></br> :warning: **WARNING:** the behavior of `signal()` varies across UNIX versions, and has also varied historically across different versions of Linux.  Avoid its use: use `sigaction(2)` instead.
-sigemptyset | signal.h | `int  sigemptyset(sigset_t *set);` </br> _Returns `0` on success and `-1` on error._ </br></br> _`sigemptyset()` initializes the signal set given by set to empty, with all signals excluded from the set._ </br></br> 💡 **OBS.:** Objects of type `sigset_t` must be initialized by a call to either `sigemptyset()` or `sigfillset()` before  being passed to the functions `sigaddset()`, `sigdelset()`, and `sigismember()` or the additional glibc functions described below (`sigisemptyset()`, `sigandset()`,  and  `sigorset()`). The results are undefined if this is not done.
-sigaddset | signal.h | `int sigaddset(sigset_t *set, int signum);` </br> _Returns `0` on success and `-1` on error._ </br></br> _`sigaddset()` adds signal signum from set._
-sigaction | signal.h | `struct sigaction {`</br>`void     (*sa_handler)(int);`</br>`void     (*sa_sigaction)(int, siginfo_t *, void *);`</br>`sigset_t   sa_mask;`</br>`int        sa_flags;`</br>`void     (*sa_restorer)(void);`</br>`};` </br></br>_`sigaction` examines and changes a signal action._</br></br>_The `sigaction()` system  call is used to change the action taken by a process on receipt of a specific signal._
-kill | signal.h | `int kill(pid_t pid, int sig);`</br></br>_`kill` sends a signal to a process._</br></br> 💡 **OBS.:** (…) Negative PID values may be used to choose whole process groups; see the PGID column in ps command output.  A PID of -1 is special;  it  indicates  all processes except the kill process itself and init.
-getpid | unistd.h | _`getpid()` returns the process ID (PID) of the calling process. (This is often used by routines that generate unique temporary filenames.)_
-malloc | stdlib.h |
-free | stdlib.h |
-pause | unistd.h | _Wait for signal._</br></br>_`pause()`  causes  the calling process (or thread) to sleep until a signal is delivered that either terminates the process or causes the invocation of a signal-catching function._</br></br>_`pause()` returns only when a signal was caught and the signal-catching function returned. In this case, `pause()` returns `-1`, and errno is set to EINTR._
-sleep | |
-usleep | unistd.h | _`usleep` suspends execution for microsecond intervals._</br></br>_The `usleep()` function suspends execution of the calling thread for (at least) usec microseconds. The sleep may be lengthened slightly by any system activity or by the time spent processing the call or by the granularity of system timers._
-exit | |
-
-</br>
-
-## Bonus
-
-- The `server` acknowledges every message received by sending back a signal to the `client`.
-- Unicode characters support.
-
-___
-
-</br>
 
 <details>
 <summary><h3>References & further reading</h3></summary>
