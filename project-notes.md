@@ -35,7 +35,7 @@ ___
         <tr>
           <th>Function</th>
           <th>Library</th>
-          <th>Description</th>
+          <th>Description / Notes</th>
         </tr>
         <tr>
           <td>write</td>
@@ -60,7 +60,7 @@ ___
         <tr>
           <td>sigaction</td>
           <td>signal.h</td>
-          <td><code>int sigaction(int signum, const struct sigaction *restrict act, struct sigaction *restrict oldact);</code></br></br><code>struct sigaction {</code></br><code>void     (*sa_handler)(int);</code></br><code>void     (*sa_sigaction)(int, siginfo_t *, void *);</code></br><code>sigset_t   sa_mask;</code></br><code>int        sa_flags;</code></br><code>void     (*sa_restorer)(void);</code></br><code>};</code></br></br><em><code>sigaction</code> examines and changes a signal action.</em></br></br><em>The <code>sigaction()</code> system  call is used to change the action taken by a process on receipt of a specific signal.</em></td>
+          <td><code>int sigaction(int signum, const struct sigaction *restrict act, struct sigaction *restrict oldact);</code></br></br><em><code>sigaction</code> examines and changes a signal action. The <code>sigaction()</code> system  call is used to change the action taken by a process on receipt of a specific signal.</em></br></br><code>struct sigaction {</code></br><code>void     (*sa_handler)(int);</code></br><code>void     (*sa_sigaction)(int, siginfo_t *, void *);</code></br><code>sigset_t   sa_mask;</code></br><code>int        sa_flags;</code></br><code>void     (*sa_restorer)(void);</code></br><code>};</code></br></br><hr><em>The <code>sa_flags</code> field can be used to modify the behavior of the specified signal:</em></br></br>If <code>SA_SIGINFO</code> is set and the signal is caught, the signal-catching function shall be entered as:</br><code>  void func(int signo, siginfo_t *info, void *context);</code></br>where two additional arguments are passed to the signal-catching function.</br></br><code>typedef struct {</code></br><code>  int		si_signo;</code></br><code>  int		si_code;</code></br><code>  union sigval	si_value;</code></br><code>  int          si_errno;</code></br><code>  pid_t	si_pid;</code></br><code>  uid_t        si_uid;</code></br><code>  void		*si_addr;</code></br><code>  int		si_status;</code></br><code>  int		si_band;</code></br><code>}  siginfo_t;</code></td>
         </tr>
         <tr>
           <td>kill</td>
@@ -70,7 +70,7 @@ ___
         <tr>
           <td>getpid</td>
           <td>unistd.h</td>
-          <td><em><code>getpid()</code> returns the process ID (PID) of the calling process. (This is often used by routines that generate unique temporary filenames.)</em></td>
+          <td><code>pid_t  getpid(void);</code></br><em><code>getpid()</code> returns the process ID (PID) of the calling process. (This is often used by routines that generate unique temporary filenames.)</em></td>
         </tr>
         <tr>
           <td>malloc</td>
