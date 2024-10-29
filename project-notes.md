@@ -60,7 +60,7 @@ ___
         <tr>
           <td>sigaction</td>
           <td>signal.h</td>
-          <td><code>int sigaction(int signum, const struct sigaction *restrict act, struct sigaction *restrict oldact);</code></br></br><code>struct sigaction {</code></br><code>void     (*sa_handler)(int);</code></br><code>void     (*sa_sigaction)(int, siginfo_t *, void *);</code></br><code>sigset_t   sa_mask;</br>int        sa_flags;</code></br><code>void     (*sa_restorer)(void);</code></br><code>};</code></br></br><em><code>sigaction</code> examines and changes a signal action.</em></br></br><em>The <code>sigaction()</code> system  call is used to change the action taken by a process on receipt of a specific signal.</em></td>
+          <td><code>int sigaction(int signum, const struct sigaction *restrict act, struct sigaction *restrict oldact);</code></br></br><code>struct sigaction {</code></br><code>void     (*sa_handler)(int);</code></br><code>void     (*sa_sigaction)(int, siginfo_t *, void *);</code></br><code>sigset_t   sa_mask;</code></br><code>int        sa_flags;</code></br><code>void     (*sa_restorer)(void);</code></br><code>};</code></br></br><em><code>sigaction</code> examines and changes a signal action.</em></br></br><em>The <code>sigaction()</code> system  call is used to change the action taken by a process on receipt of a specific signal.</em></td>
         </tr>
         <tr>
           <td>kill</td>
