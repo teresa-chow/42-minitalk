@@ -70,7 +70,7 @@ ___
         <tr>
           <td>getpid</td>
           <td>unistd.h</td>
-          <td><code>pid_t  getpid(void);</code></br><em><code>getpid()</code> returns the process ID (PID) of the calling process. (This is often used by routines that generate unique temporary filenames.)</em></td>
+          <td><code>pid_t  getpid(void);</code></br></br><em><code>getpid()</code> returns the process ID (PID) of the calling process. (This is often used by routines that generate unique temporary filenames.)</em></td>
         </tr>
         <tr>
           <td>malloc</td>
