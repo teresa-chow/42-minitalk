@@ -89,8 +89,8 @@ ___
         </tr>
         <tr>
           <td>sleep</td>
-          <td><em>Delay for a specified amount of time (seconds).</em></td>
           <td></td>
+          <td><em>Delay for a specified amount of time (seconds).</em></td>
         </tr>
         <tr>
           <td>usleep</td>
