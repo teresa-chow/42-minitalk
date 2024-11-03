@@ -21,12 +21,37 @@ void	printerr_exit(char *str)
 	exit(EXIT_FAILURE);
 }
 
-/*void	send_bit(pid_t pid, unsigned char bit, bool pause_flag)
+/* Blocking signals during the execution of the handler:
+this set of signals will not interrupt the execution of the handler */
+void	block_signals(struct sigaction *sa)
 {
-	if ((bit == 0) && (kill(pid, SIGUSR1) == -1))
+	sigemptyset(&sa->sa_mask);
+	sigaddset(&sa->sa_mask, SIGINT);
+	sigaddset(&sa->sa_mask, SIGQUIT);
+	sigaddset(&sa->sa_mask, SIGUSR1);
+	sigaddset(&sa->sa_mask, SIGUSR2);
+}
+
+/* sigaction examines and sets the action to be associated with a signal */
+void	set_sigaction(struct sigaction *sa)
+{
+	if (sigaction(SIGUSR1, sa, NULL) == -1)
+		printerr_exit("sigaction() failed to handle SIGUSR1\n");
+	if (sigaction(SIGUSR2, sa, NULL) == -1)
+		printerr_exit("sigaction() failed to handle SIGUSR2\n");
+}
+
+void	send_bit(pid_t pid, int bit)
+{
+	if (bit == 0)
+	{
+		if (kill(pid, SIGUSR1) == -1)
 			printerr_exit("kill() failed to send SIGUSR1\n");
-	else if ((bit == 1) && (kill(pid, SIGUSR2) == -1))
+	}
+	else if (bit == 1)
+	{
+		if (kill(pid, SIGUSR2) == -1)
 			printerr_exit("kill() failed to send SIGUSR2\n");
-	if (pause_flag)
-		usleep(PAUSE);
-}*/
+	}
+	usleep(PAUSE);
+}

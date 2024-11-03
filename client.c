@@ -16,7 +16,6 @@ static void	check_error(int argc, char **argv);
 static void	send_msg(pid_t pid, const char *msg);
 static void	send_len(pid_t pid, unsigned int len);
 static void	send_char(pid_t pid, unsigned char c);
-static void	send_bit(pid_t pid, int bit);
 
 int	main(int argc, char **argv)
 {
@@ -70,9 +69,7 @@ static void	send_len(pid_t pid, unsigned int len)
 		bit = (len >> bitshift) & 1;
 		send_bit(pid, bit);
 		bitshift--;
-		ft_printf("%d", bit);
 	}
-	ft_printf("\n");
 }
 
 static void	send_char(pid_t pid, unsigned char c)
@@ -88,19 +85,4 @@ static void	send_char(pid_t pid, unsigned char c)
 		send_bit(pid, bit);
 		bitshift--;
 	}
-}
-
-static void	send_bit(pid_t pid, int bit)
-{
-	if (bit == 0)
-	{
-		if (kill(pid, SIGUSR1) == -1)
-			printerr_exit("kill() failed to send SIGUSR1\n");
-	}
-	else if (bit == 1)
-	{
-		if (kill(pid, SIGUSR2) == -1)
-			printerr_exit("kill() failed to send SIGUSR2\n");
-	}
-	usleep(PAUSE);
 }
