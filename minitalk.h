@@ -13,7 +13,7 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# define PAUSE 200
+# define PAUSE 50
 
 # include <stdbool.h>
 # include <signal.h>

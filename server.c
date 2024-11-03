@@ -43,7 +43,6 @@ static void	handle_server(int signal, siginfo_t *info, void *context)
 		receive_len(signal, &msg);
 	if (msg.active && !msg.str)
 	{
-		ft_printf("msg.len: %d\n", msg.len);
 		msg.str = ft_calloc(msg.len + 1, sizeof(char));
 		if (!msg.str)
 			printerr_exit("Memory allocation failed.\n");
@@ -97,12 +96,17 @@ static void	receive_str(int signal, t_msg *msg)
 
 static void	print_msg(t_msg *msg)
 {
-	ft_printf("%s", msg->str);
+	int	i;
+
+	i = 0;
+	while (msg->str[i])
+	{
+		write(1, &msg->str[i], 1);
+		i++;
+	}
+	write(1, "\n", 1);
 	free(msg->str);
 	msg->str = NULL;
 	msg->active = 0;
 	msg->len = 0;
-	//free(msg);
-	//msg = NULL;
-	ft_printf("\nmsg: %p | msg->len: %d | msg->active: %d | msg->str: %s\n", msg, msg->len, msg->active, msg->str);
 }
