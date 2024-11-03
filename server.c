@@ -45,6 +45,8 @@ static void	handle_server(int signal, siginfo_t *info, void *context)
 		if (!msg)
 			printerr_exit("Memory allocation failed.\n");
 	}
+	if (msg->active && (signal == SIGUSR1 || signal == SIGUSR2))
+		receive_str(signal, msg);
 	if (!msg->active && (signal == SIGUSR1 || signal == SIGUSR2))
 		receive_len(signal, msg);
 	if (msg->active && !msg->str)
@@ -53,8 +55,6 @@ static void	handle_server(int signal, siginfo_t *info, void *context)
 		if (!msg->str)
 			printerr_exit("Memory allocation failed.\n");
 	}
-	else if (msg->active && (signal == SIGUSR1 || signal == SIGUSR2))
-		receive_str(signal, msg);
 }
 
 static void	receive_len(int signal, t_msg *msg)
@@ -93,8 +93,7 @@ static void	receive_str(int signal, t_msg *msg)
 	{
 		bitshift = (sizeof(char) * 8) - 1;
 		i++;
-		msg->str[i] = '\0';
-		if (!msg->end && i == (msg->len + 1))
+		if (i == (msg->len + 1))
 		{
 			print_msg(msg);
 			i = 0;
@@ -106,7 +105,6 @@ static void	receive_str(int signal, t_msg *msg)
 static void	print_msg(t_msg *msg)
 {
 	ft_printf("%s", msg->str);
-	free(msg->str);
 	free(msg);
 	return ;
 }
