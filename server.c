@@ -35,26 +35,21 @@ int	main(void)
 /* Server signal handler */
 static void	handle_server(int signal, siginfo_t *info, void *context)
 {
-	static t_msg	*msg = {0};
+	static t_msg	msg = {0};
 	
 	(void)info;
 	(void)context;
-	if (!msg)
+	if (!msg.active && (signal == SIGUSR1 || signal == SIGUSR2))
+		receive_len(signal, &msg);
+	if (msg.active && !msg.str)
 	{
-		msg = ft_calloc(1, sizeof(msg));
-		if (!msg)
+		ft_printf("msg.len: %d\n", msg.len);
+		msg.str = ft_calloc(msg.len + 1, sizeof(char));
+		if (!msg.str)
 			printerr_exit("Memory allocation failed.\n");
 	}
-	if (msg->active && (signal == SIGUSR1 || signal == SIGUSR2))
-		receive_str(signal, msg);
-	if (!msg->active && (signal == SIGUSR1 || signal == SIGUSR2))
-		receive_len(signal, msg);
-	if (msg->active && !msg->str)
-	{
-		msg->str = ft_calloc(msg->len + 1, sizeof(char));
-		if (!msg->str)
-			printerr_exit("Memory allocation failed.\n");
-	}
+	else if (msg.active && (signal == SIGUSR1 || signal == SIGUSR2))
+		receive_str(signal, &msg);
 }
 
 static void	receive_len(int signal, t_msg *msg)
@@ -73,7 +68,6 @@ static void	receive_len(int signal, t_msg *msg)
 		msg->active = 1;
 	if (msg->active)
 		bitshift = (sizeof(int) * 8) - 1;
-	return ;
 }
 
 static void	receive_str(int signal, t_msg *msg)
@@ -99,12 +93,16 @@ static void	receive_str(int signal, t_msg *msg)
 			i = 0;
 		}
 	}
-	return ;
 }
 
 static void	print_msg(t_msg *msg)
 {
 	ft_printf("%s", msg->str);
-	free(msg);
-	return ;
+	free(msg->str);
+	msg->str = NULL;
+	msg->active = 0;
+	msg->len = 0;
+	//free(msg);
+	//msg = NULL;
+	ft_printf("\nmsg: %p | msg->len: %d | msg->active: %d | msg->str: %s\n", msg, msg->len, msg->active, msg->str);
 }

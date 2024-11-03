@@ -13,7 +13,7 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# define PAUSE 1000
+# define PAUSE 200
 
 # include <stdbool.h>
 # include <signal.h>
@@ -26,7 +26,6 @@
 typedef struct	s_msg {
 	unsigned int	len;
 	bool	active;
-	bool	end;
 	char	*str;
 } t_msg;
 

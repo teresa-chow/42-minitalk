@@ -63,7 +63,7 @@ static void	send_len(pid_t pid, unsigned int len)
 	int	bitshift;
 
 	bit = 0;
-	bitshift = sizeof(int) * 8 - 1;
+	bitshift = (sizeof(int) * 8) - 1;
 	while (bitshift >= 0)
 	{
 		bit = (len >> bitshift) & 1;
