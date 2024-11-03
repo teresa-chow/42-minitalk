@@ -34,5 +34,4 @@ void	block_signals(struct sigaction *sa);
 void	set_sigaction(struct sigaction *sa);
 void	send_bit(pid_t pid, int bit);
 
-
 #endif
