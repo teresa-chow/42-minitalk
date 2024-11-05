@@ -18,14 +18,22 @@ NAME		= $(NAME_SERVER) $(NAME_CLIENT)
 NAME_SERVER	= server
 NAME_CLIENT	= client
 
+BONUS		= $(NAME_SERVER_BONUS) $(NAME_CLIENT_BONUS)
+NAME_SERVER_BONUS	= server_bonus
+NAME_CLIENT_BONUS	= client_bonus
+
 SRC_SERVER	= server.c
 SRC_CLIENT	= client.c
 SRC_UTILS	= utils.c
+SRC_SERVER_BONUS	= server_bonus.c
+SRC_CLIENT_BONUS	= client_bonus.c client_handler_bonus.c
 
 BUILD_DIR	= .build
 OBJS_SERVER 	= $(addprefix $(BUILD_DIR)/, $(notdir $(SRC_SERVER:.c=.o)))
 OBJS_CLIENT	= $(addprefix $(BUILD_DIR)/, $(notdir $(SRC_CLIENT:.c=.o)))
 OBJS_UTILS	= $(addprefix $(BUILD_DIR)/, $(notdir $(SRC_UTILS:.c=.o)))
+OBJS_SERVER_BONUS 	= $(addprefix $(BUILD_DIR)/, $(notdir $(SRC_SERVER_BONUS:.c=.o)))
+OBJS_CLIENT_BONUS	= $(addprefix $(BUILD_DIR)/, $(notdir $(SRC_CLIENT_BONUS:.c=.o)))
 
 LIBFT_DIR	= libft
 LIBFT_ARC	= $(LIBFT_DIR)/libft.a
@@ -61,7 +69,14 @@ $(NAME): $(LIBFT_ARC) $(BUILD_DIR) $(OBJS_SERVER) $(OBJS_CLIENT) $(OBJS_UTILS)
 	$(CC) $(CFLAGS) $(OBJS_CLIENT) $(OBJS_UTILS) $(LIBFT_ARC) -o $(NAME_CLIENT)
 	@printf "$(GRN)>> Compiled Client$(RES)\n\n"
 
-bonus: all	## Compile minitalk with bonus features (required by subject)
+bonus: $(BONUS)	## Compile minitalk with bonus features (required by subject)
+
+$(BONUS): $(LIBFT_ARC) $(BUILD_DIR) $(OBJS_SERVER_BONUS) $(OBJS_CLIENT_BONUS) $(OBJS_UTILS)
+	@printf "$(GRN)>> Generated object files (bonus version)$(RES)\n\n"
+	$(CC) $(CFLAGS) $(OBJS_SERVER_BONUS) $(OBJS_UTILS) $(LIBFT_ARC) -o $(NAME_SERVER_BONUS)
+	@printf "$(GRN)>> Compiled Server (bonus version)$(RES)\n\n"
+	$(CC) $(CFLAGS) $(OBJS_CLIENT_BONUS) $(OBJS_UTILS) $(LIBFT_ARC) -o $(NAME_CLIENT_BONUS)
+	@printf "$(GRN)>> Compiled Client (bonus version)$(RES)\n\n"
 
 $(BUILD_DIR):
 	$(MKDIR) $(BUILD_DIR)
@@ -82,7 +97,7 @@ clean:	## Remove object files
 	@printf "$(GRN)>> Removed object files$(RES)\n\n"
 
 fclean: clean	## Remove executable files
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BONUS)
 	@printf "$(GRN)>> Removed executable files$(RES)\n\n"
 	$(MAKE) $(LIBFT_DIR) fclean
 	@printf "$(GRN)>> Removed Libft archive$(RES)\n\n"

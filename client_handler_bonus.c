@@ -14,8 +14,6 @@
 
 void	handle_client(int signal, siginfo_t *info, void *context)
 {
-	static t_msg	msg = {0};
-	
 	(void)info;
 	(void)context;
 	if (signal == SIGUSR2)

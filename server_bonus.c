@@ -42,7 +42,7 @@ static void	handle_server(int signal, siginfo_t *info, void *context)
 		receive_len(signal, &msg);
 	if (msg.active && !msg.str)
 	{
-		msg->pid = info->si_pid;
+		msg.pid = info->si_pid;
 		msg.str = ft_calloc(msg.len + 1, sizeof(char));
 		if (!msg.str)
 			printerr_exit("Memory allocation failed.\n");
