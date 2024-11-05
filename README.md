@@ -7,14 +7,57 @@ ___
 
 
 ### Table of contents
-[Usage](#compass-usage) · [Mandatory](#mandatory) · [Bonus](#bonus-part) · [License](#license)
+[Subject notes](#pencil2-subject-notes) · [Usage](#compass-usage) · [License](#license)
+
+___
+
+</br>
+
+# :pencil2: Subject notes
+
+Notes on the subject and further reading on : [here](./minitalk-notes.md).
 
 ___
 
 </br>
 
 # :compass: Usage
+## Setup and compilation
 
+1. Clone repository
+    ```bash
+    git clone git@github.com:teresa-chow/42-minitalk.git minitalk
+    ```
+
+2. Go inside project directory and run `make`
+    ```bash
+    cd minitalk
+    make
+    ```
+3. To check Makefile rules, run `make` followed by `help` as an argument
+    ```bash
+    make help
+    ```
+4. Start the `server` first
+    ```bash
+    ./server
+    ```
+5. And then execute the `client` in a different terminal window
+    ```bash
+    ./client <server_pid> <message>
+    ```
+6. To compile the project with bonus features, run `make bonus`
+    ```bash
+    make bonus
+    ```
+7. Start `server_bonus` first
+    ```bash
+    ./server_bonus
+    ```
+8.  And then `client_bonus` in a different terminal window
+    ```bash
+    ./client_bonus <server_pid> <message>
+    ```
 ___
 
 </br>
