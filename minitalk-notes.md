@@ -1,4 +1,4 @@
-# Minitalk
+# Minitalk notes
 [![42 School: Rank 2](https://img.shields.io/badge/42%20School-Rank%202-%2315bbbb)](https://www.42network.org/)
 
 _This document contains my notes about 42 Common Core curriculum project "Minitalk"._
