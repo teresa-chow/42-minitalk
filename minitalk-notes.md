@@ -27,7 +27,7 @@ ___
     <li>The <code>server</code> must be started first. After its launch, it has to print its PID.</li>
     <li>The <code>client</code> takes two parameters: <code>server PID</code> + <code>string to send</code>.</li>
     <li>The <code>client</code> must send the string passed as a parameter to the <code>server</code>. Once the string has been received, the server must print it. (Original, in French: <em>Une fois la chaîne <strong>entièrement reçue</strong>, le serveur doit l’afficher.</em>)</li>
-    <li>One can only use these two signals: <code>SIGUSR1</code> and <code>SIGUSR2</code>.</li>
+    <li>We can only use these two signals: <code>SIGUSR1</code> and <code>SIGUSR2</code>.</li>
     <li>The <code>server</code> should be able to receive strings from several clients in a row without needing to restart.</li>
     <li>Communication between client and your server has to be done <strong>only</strong> using <code>UNIX signals</code>.</li>
     <li>Use of the following functions is allowed:</br></br>
@@ -131,10 +131,11 @@ ___
       <li><a href="https://www.youtube.com/watch?v=PErrlOx3LYE">Code Vault: Communicating between processes using signals [video]</a></li>
     </ul>
   </br>
-  <h4>Bitwise operators</h4>
+  <h4>Bitwise operators & bit shifting</h4>
     <ul>
       <li><a href="https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/">Bitwise operators in C</a></li>
       <li><a href="https://www.codequoi.com/en/binary-010-uses-of-bit-shifting-and-bitwise-operations/">Binary 010: The uses of bit shifting and bitwise operations</a></li>
+      <li><a href="https://onlinetoolz.net/bitshift">Bit shift visualizer</a></li>
     </ul>
   </br>
   <h4>Makefile</h4>
