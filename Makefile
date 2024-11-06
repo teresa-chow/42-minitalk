@@ -45,7 +45,7 @@ LIBFT_ARC	= $(LIBFT_DIR)/libft.a
 
 CC	= cc
 CFLAGS	= -Wall -Wextra -Werror
-CFLAGS	+= -g
+#CFLAGS	+= -g
 
 MAKE	= make -C
 
