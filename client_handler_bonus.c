@@ -6,7 +6,7 @@
 /*   By: tchow-so <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 10:38:42 by tchow-so          #+#    #+#             */
-/*   Updated: 2024/11/10 10:38:52 by tchow-so         ###   ########.fr       */
+/*   Updated: 2024/11/10 12:00:00 by tchow-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	handle_client(int signal, siginfo_t *info, void *context)
 	(void)context;
 	if (signal == SIGUSR2)
 		write(1, "SUCCESS: Message sent\n", 22);
+	exit(EXIT_SUCCESS);
 }
