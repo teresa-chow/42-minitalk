@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tchow-so <tchow-so@student.42porto.com>    +#+  +:+       +#+         #
+#    By: tchow-so <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/17 14:50:48 by tchow-so          #+#    #+#              #
-#    Updated: 2024/10/28 09:13:38 by tchow-so         ###   ########.fr        #
+#    Created: 2024/11/10 10:52:33 by tchow-so          #+#    #+#              #
+#    Updated: 2024/11/10 11:45:13 by tchow-so         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ LIBFT_ARC	= $(LIBFT_DIR)/libft.a
 
 CC	= cc
 CFLAGS	= -Wall -Wextra -Werror
-#CFLAGS	+= -g
+#CFLAGS	+= -g -fsanitize=address
 
 MAKE	= make -C
 
