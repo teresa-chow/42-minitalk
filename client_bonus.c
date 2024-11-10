@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tchow-so <tchow-so@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: tchow-so <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 09:50:07 by tchow-so          #+#    #+#             */
-/*   Updated: 2024/11/03 11:37:32 by tchow-so         ###   ########.fr       */
+/*   Created: 2024/11/10 10:36:19 by tchow-so          #+#    #+#             */
+/*   Updated: 2024/11/10 11:24:21 by tchow-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	send_char(pid_t pid, unsigned char c);
 int	main(int argc, char **argv)
 {
 	struct sigaction	sa;
-	pid_t	server_pid;
+	pid_t				server_pid;
 
 	ft_bzero(&sa, sizeof(sa));
 	block_signals(&sa);
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	check_error(argc, argv);
 	server_pid = ft_atoi(argv[1]);
 	send_msg(server_pid, argv[2]);
+	pause();
 	return (EXIT_SUCCESS);
 }
 
