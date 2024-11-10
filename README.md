@@ -15,7 +15,7 @@ ___
 
 # :pencil2: Subject notes
 
-Notes on the subject and further reading : [here](./minitalk-notes.md).
+Notes on the subject and further reading : [here](https://github.com/teresa-chow/42-minitalk/wiki).
 
 ___
 
